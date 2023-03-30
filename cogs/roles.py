@@ -1,16 +1,18 @@
+import discord
 from discord.ext import commands
 
 class Roles(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # returns a list of these roles: 
+    # replies to the user with a list of roles: 
     # Light Blue, Dark Blue, Orange, Yellow, Blurple, Purple, Green, Peach, Pink, Red
     # teen that cares™, movie-goers, academia, aesthetic, coders, floofs, news, dinos, vc
     @commands.command()
     async def roles(self, ctx):
-        await ctx.send("Light Blue, Dark Blue, Orange, Yellow, Blurple, Purple, Green, Peach, Pink, Red, teen that cares™, movie-goers, academia, aesthetic, coders, floofs, news, dinos, vc")
-
+        await ctx.send("""Light Blue, Dark Blue, Orange, Yellow, Blurple, Purple, Green, Peach, Pink, Red
+                        teen that cares™, movie-goers, academia, aesthetic, coders, floofs, news, dinos, vc""")
+                       
     # adds a role based on the string provided by the user
     # kicks back an error if the role doesnt exist
     @commands.command()
@@ -33,5 +35,5 @@ class Roles(commands.Cog):
             await ctx.author.remove_roles(role)
             await ctx.send("Role removed")
 
-def setup(bot):
-    bot.add_cog(Roles(bot))
+async def setup(bot):
+    await bot.add_cog(Roles(bot))
