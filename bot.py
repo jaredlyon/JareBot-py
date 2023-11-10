@@ -1,4 +1,8 @@
 import discord
+import json
+
+with open("config.json") as json_data_file:
+    config = json.load(json_data_file)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,4 +21,4 @@ async def on_message(message):
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
 
-client.run('MzMwNDg2NDg0Mjg3MzU2OTI4.GB1Rbb.n8ZV98pB_m8g1ud7i5K5oTjGVXJ25X6pg1PWm8')
+client.run(config.token)
